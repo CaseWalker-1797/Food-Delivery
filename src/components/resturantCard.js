@@ -2,7 +2,7 @@ import {
   View,
   Text,
   Image,
-  TouchableWithoutFeedback,
+  TouchableWithoutFeedback,StyleSheet
 } from 'react-native';
 import React from 'react';
 import {themeColors} from '../styles/theme';
@@ -14,7 +14,8 @@ const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback onPress={()=>navigation.navigate('Restro',{...item})}>
       <View
-        style={{shadowColor: themeColors.bgColor(0.2), shadowRadius: 7}}
+        // style={{shadowColor: themeColors.bgColor(0.2), shadowRadius: 7,}}
+        style={styles.container}
         className="mr-6 bg-white rounded-3xl shadow-lg">
         <Image className="h-36 w-64 rounded-t-3xl" source={item.image} />
         <View className="px-3 pb-4 space-y-2">
@@ -43,5 +44,20 @@ const navigation = useNavigation();
     </TouchableWithoutFeedback>
   );
 };
+
+const styles = StyleSheet.create({
+  container:{
+    shadowColor: "#F97316",
+shadowOffset: {
+  width: 4,
+  height: 6,
+},
+shadowOpacity:  0.2,
+shadowRadius:7,
+elevation: 9,
+
+
+  },
+});
 
 export default ResturantCard;

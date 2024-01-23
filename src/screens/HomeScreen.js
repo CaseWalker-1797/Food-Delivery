@@ -9,7 +9,7 @@ import {featured} from '../constants';
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className="bg-white">
+    <SafeAreaView className="bg-white flex-1">
       <StatusBar barStyle="dark-content" />
       {/* Search Bar */}
       <View className="flex-row items-center space-x-2 px-4 pb-2 ">

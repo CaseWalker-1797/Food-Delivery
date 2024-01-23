@@ -7,7 +7,7 @@ import RestaurantCard from './resturantCard';
 const FeaturedRow = ({title, description, restaurants}) => {
   return (
     <View>
-    <View className="flex-row justify-between items-center px-4">
+    <View className="flex-row justify-between items-center px-4 ">
       <View>
         <Text className="font-bold text-lg">{title}</Text>
         <Text className="text-gray-500 text-xs">
@@ -20,15 +20,14 @@ const FeaturedRow = ({title, description, restaurants}) => {
       </TouchableOpacity>
     </View>
 
-    
-
-    <ScrollView
+      <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{
-          paddingHorizontal:15,
+          paddingHorizontal:15, 
+          paddingBottom:18,
       }}
-      className="overflow-visible py-5"
+      className="overflow-visible py-2"
      >
       {
         restaurants.map((restaurant,index)=>{
@@ -40,7 +39,6 @@ const FeaturedRow = ({title, description, restaurants}) => {
         })
       }           
      </ScrollView>
-  
   </View>
   );
 };

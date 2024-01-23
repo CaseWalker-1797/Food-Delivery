@@ -14,6 +14,7 @@ const DeliveryScreen = () => {
   return (
     <View className="flex-1" >
     <MapView
+    provider={MapView.PROVIDER_GOOGLE}
     initialRegion={{
         latitude: restaurant.lat,
         longitude: restaurant.lng,
@@ -21,7 +22,7 @@ const DeliveryScreen = () => {
         longitudeDelta: 0.01,
       }} 
       className="flex-1"
-      mapType="standard"
+      mapType="terrain"
     >
         <Marker 
             coordinate={{
@@ -40,9 +41,12 @@ const DeliveryScreen = () => {
       </TouchableOpacity>
       <View className="flex-row justify-between px-5 pt-10">
           <View>
-              <Text className="text-lg text-gray-700 font-semibold">Estimated Arrival</Text>
-              <Text className="text-3xl font-extrabold text-gray-700">20-30 Minutes</Text>
-              <Text className="mt-2 text-gray-700 font-semibold">Your Order is own its way</Text>
+              <Text className="text-lg text-gray-700 font-semibold">
+                Estimated Arrival</Text>
+              <Text className="text-3xl font-extrabold text-gray-700">
+                20-30 Minutes</Text>
+              <Text className="mt-2 text-gray-700 font-semibold">
+                Your Order is own its way</Text>
           </View>
           <Image className="h-24 w-24" source={require('../assets/images/bikeGuy2.gif')} />
       </View>
@@ -75,4 +79,4 @@ const DeliveryScreen = () => {
   )
 }
 
-export default DeliveryScreen
+export default DeliveryScreen;
