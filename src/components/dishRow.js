@@ -1,14 +1,14 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
-import {themeColors} from '../styles/theme';
-import * as Icon from 'react-native-feather';
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { themeColors } from "../styles/theme";
+import * as Icon from "react-native-feather";
 
-const DishRow = ({item}) => {
+const DishRow = ({ item }) => {
   return (
-    <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
+    <View className=" flex-row items-center bg-white px-3 py-3 rounded-3xl shadow-2xl mb-3 mx-2">
       <Image
         className="rounded-3xl"
-        style={{height: 100, width: 100}}
+        style={{ height: 100, width: 100 }}
         source={item.image}
       />
       <View className="flex flex-1 space-y-3">
@@ -23,7 +23,8 @@ const DishRow = ({item}) => {
               // onPress={handleDecrease}
               // disabled={!basketItems.length}
               className="p-1 rounded-full"
-              style={{backgroundColor: themeColors.bgColor(1)}}>
+              style={{ backgroundColor: themeColors.bgColor(1) }}
+            >
               <Icon.Minus
                 strokeWidth={2}
                 height={20}
@@ -35,7 +36,8 @@ const DishRow = ({item}) => {
             <TouchableOpacity
               // onPress={handleIncrease}
               className="p-1 rounded-full"
-              style={{backgroundColor: themeColors.bgColor(1)}}>
+              style={{ backgroundColor: themeColors.bgColor(1) }}
+            >
               <Icon.Plus
                 strokeWidth={2}
                 height={20}

@@ -62,7 +62,7 @@ const RestroScreen = ({ navigation }) => {
         </View>
       </View>
       <View className="pb-36 bg-white">
-        <Text className="px-4 py-4 text-2xl font-bold">Menu</Text>
+        <Text className="px-4 py-2 text-2xl font-bold">Menu</Text>
         <ScrollView>
           {/* dishes */}
           {item.dishes.map((dish, index) => {
