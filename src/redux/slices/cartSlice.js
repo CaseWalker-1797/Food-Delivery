@@ -25,7 +25,8 @@ export const cartSlice = createSlice({
       state.items = newCart
     },
     emptyCart: (state, action)=>{
-        state.items = [];
+      state.items = [];
+      console.log("Cart has been emptied");
     }
   },
 })
