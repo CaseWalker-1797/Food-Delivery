@@ -11,7 +11,7 @@ const CartScreen = () => {
   const navigation = useNavigation();
   const [groupedItems, setGroupedItems] = useState([]);
   return (
-    <View>
+    <View className=" bg-white flex-1">
       {/* top button */}
       <View className="relative py-4 shadow-sm">
         <TouchableOpacity
