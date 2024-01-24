@@ -19,7 +19,7 @@ const RestroScreen = ({ navigation }) => {
   let item = params;
   console.log("restro+++++++>", item);
   return (
-    <>
+    <SafeAreaView className="flex-1" edges={["bottom"]}>
       <View className="relative">
         <Image className="w-full h-72" source={item.image} />
         <TouchableOpacity
@@ -61,19 +61,19 @@ const RestroScreen = ({ navigation }) => {
           <Text className="text-gray-500 mt-2">{item.description}</Text>
         </View>
       </View>
-      <View className="pb-36 bg-white">
+      <View className="flex-1 bg-white">
         <Text className="px-4 py-2 text-2xl font-bold">Menu</Text>
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}>
           {/* dishes */}
           {item.dishes.map((dish, index) => {
             return <DishRow key={index} item={{ ...dish }} />;
           })}
+          <View style={{height: 75,}} />
         </ScrollView>
-        <View>
           <CartIcon />
-        </View>
       </View>
-    </>
+    </SafeAreaView>
   );
 };
 

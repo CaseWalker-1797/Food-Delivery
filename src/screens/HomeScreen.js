@@ -10,10 +10,9 @@ import {featured} from '../constants';
 const HomeScreen = () => {
   return (
     <SafeAreaView className="bg-white flex-1">
-      <StatusBar barStyle="dark-content" />
       {/* Search Bar */}
-      <View className="flex-row items-center space-x-2 px-4 pb-2 ">
-        <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
+      <View className="flex-row items-center space-x-2 p-2">
+        <View className="flex-row flex-1 items-center p-2 rounded-full border border-gray-300">
           <Icon.Search height="25" width="25" stroke="gray" />
           <TextInput
             placeholder="Restaurants"

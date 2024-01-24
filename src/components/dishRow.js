@@ -1,11 +1,13 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import { themeColors } from "../styles/theme";
 import * as Icon from "react-native-feather";
 
 const DishRow = ({ item }) => {
   return (
-    <View className=" flex-row items-center bg-white px-3 py-3 rounded-3xl shadow-2xl mb-3 mx-2">
+    <View
+      style={styles.container}
+      className=" border border-gray-100 flex-row items-center bg-white px-3 py-3 rounded-3xl shadow-2xl mb-3 mx-2">
       <Image
         className="rounded-3xl"
         style={{ height: 100, width: 100 }}
@@ -52,4 +54,16 @@ const DishRow = ({ item }) => {
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 4,
+      height: 6,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 7,
+    elevation: 9,
+  },
+});
 export default DishRow;

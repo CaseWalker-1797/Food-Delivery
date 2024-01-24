@@ -7,8 +7,8 @@ const CartIcon = () => {
   const navigation = useNavigation();
 
   return (
-    <View className="absolute bottom-5 w-full z-50">
-      <View className="absolute bottom-5 w-full z-50">
+    <View className="absolute bottom-2 w-full z-50">
+      <View className="absolute bottom-2 w-full z-50">
         <TouchableOpacity
           style={{backgroundColor: themeColors.bgColor(1)}}
           onPress={() => navigation.navigate('Cart')}
