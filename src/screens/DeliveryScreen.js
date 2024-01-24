@@ -2,19 +2,21 @@ import { View, Text,TouchableOpacity,Image } from 'react-native'
 import React from 'react'
 import { featured } from '../constants';
 import { useNavigation } from '@react-navigation/native';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_DEFAULT } from 'react-native-maps';
 import { themeColors } from '../styles/theme';
 import * as Icon from 'react-native-feather';
+import { useSelector } from 'react-redux';
+import { selectRestro } from '../redux/slices/restroSlice';
 
 const DeliveryScreen = () => {
-  const restaurant = featured.restaurants[0];
+  const restaurant = useSelector(selectRestro);
   const navigation = useNavigation();
   const handleCancel = ()=>{
     navigation.navigate('Home')}
   return (
     <View className="flex-1" >
     <MapView
-    provider={MapView.PROVIDER_GOOGLE}
+    provider={PROVIDER_DEFAULT}
     initialRegion={{
         latitude: restaurant.lat,
         longitude: restaurant.lng,
@@ -29,7 +31,7 @@ const DeliveryScreen = () => {
                 latitude: restaurant.lat,
                 longitude: restaurant.lng
             }} 
-            title={restaurant.title}
+            title={restaurant.name}
             description={restaurant.description}
             pinColor={themeColors.bgColor(1)}
         />
@@ -46,7 +48,7 @@ const DeliveryScreen = () => {
               <Text className="text-3xl font-extrabold text-gray-700">
                 20-30 Minutes</Text>
               <Text className="mt-2 text-gray-700 font-semibold">
-                Your Order is own its way</Text>
+                Your order will arrive soon</Text>
           </View>
           <Image className="h-24 w-24" source={require('../assets/images/bikeGuy2.gif')} />
       </View>
@@ -54,8 +56,13 @@ const DeliveryScreen = () => {
     <View 
       style={{backgroundColor: themeColors.bgColor(0.8)}} 
       className="p-2 flex-row justify-between items-center rounded-full my-5 mx-2">
-        <View style={{backgroundColor: 'rgba(255,255,255,0.4)'}} className="p-1 rounded-full">
-          <Image style={{backgroundColor: 'rgba(255,255,255,0.4)'}} className="w-16 h-16 rounded-full" source={require('../assets/images/deliveryGuy.png')} />
+          <View
+            style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}
+            className="p-1 rounded-full">
+            <Image
+              style={{ backgroundColor: 'rgba(255,255,255,0.4)' }}
+              className="w-16 h-16 rounded-full"
+              source={require('../assets/images/deliveryGuy.jpeg')} />
         </View>
         
         <View className="flex-1 ml-3">

@@ -1,23 +1,48 @@
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
-import React from 'react';
-import {useState} from 'react';
-import {themeColors} from '../styles/theme';
-import {useNavigation} from '@react-navigation/native';
-import * as Icon from 'react-native-feather';
-import {featured} from '../constants';
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { themeColors } from "../styles/theme";
+import { useNavigation } from "@react-navigation/native";
+import * as Icon from "react-native-feather";
+import { featured } from "../constants";
+import { useSelector, useDispatch } from "react-redux";
+import { selectRestro } from "../redux/slices/restroSlice";
+import {
+  removeFromCart,
+  selectCartItems,
+  selectCartTotal,
+} from "../redux/slices/cartSlice";
 
 const CartScreen = () => {
-  const restaurant = featured.restaurants[0];
+  const dispatch = useDispatch();
+  const deliveryFee = 2;
+  const restaurant = useSelector(selectRestro);
   const navigation = useNavigation();
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
   const [groupedItems, setGroupedItems] = useState([]);
+
+  useEffect(() => {
+    const items = cartItems.reduce((group, item) => {
+      if (group[item.id]) {
+        group[item.id].push(item);
+      } else {
+        group[item.id] = [item];
+      }
+      return group;
+    }, {});
+    setGroupedItems(items);
+  }, [cartItems]);
+
   return (
     <View className=" bg-white flex-1">
       {/* top button */}
       <View className="relative py-4 shadow-sm">
         <TouchableOpacity
-          style={{backgroundColor: themeColors.bgColor(1)}}
+          style={{ backgroundColor: themeColors.bgColor(1) }}
           onPress={navigation.goBack}
-          className="absolute z-10 rounded-full p-1 shadow top-5 left-2">
+          className="absolute z-10 rounded-full p-1 shadow top-5 left-2"
+        >
           <Icon.ArrowLeft strokeWidth={3} stroke="white" />
         </TouchableOpacity>
         <View>
@@ -27,16 +52,17 @@ const CartScreen = () => {
       </View>
       {/* delivery time */}
       <View
-        style={{backgroundColor: themeColors.bgColor(0.2)}}
-        className="flex-row px-4 items-center">
+        style={{ backgroundColor: themeColors.bgColor(0.2) }}
+        className="flex-row px-4 items-center"
+      >
         <Image
-          source={require('../assets/images/bikeGuy.png')}
+          source={require("../assets/images/bikeGuy.png")}
           className="w-20 h-20 rounded-full"
         />
         <Text className="flex-1 pl-4">Deliver in 20-30 minutes</Text>
         <TouchableOpacity>
-          <Text style={{color: themeColors.text}} className="font-bold">
-            Change
+          <Text style={{ color: themeColors.text }} className="font-bold">
+            Change{" "}
           </Text>
         </TouchableOpacity>
       </View>
@@ -45,14 +71,17 @@ const CartScreen = () => {
         className="bg-white pt-5"
         contentContainerStyle={{
           paddingBottom: 50,
-        }}>
-        {restaurant.dishes.map((dish, index) => {
+        }}
+      >
+        {Object.entries(groupedItems).map(([key, items]) => {
+          let dish = items[0];
           return (
             <View
-              key={index}
-              className="flex-row items-center space-x-3 py-2 px-4 bg-white rounded-3xl mx-2 mb-3 shadow-md">
-              <Text style={{color: themeColors.text}} className="font-bold">
-                x 2{' '}
+              key={key}
+              className="flex-row items-center space-x-3 py-2 px-4 bg-white rounded-3xl mx-2 mb-3 shadow-md"
+            >
+              <Text style={{ color: themeColors.text }} className="font-bold">
+                x{items.length}
               </Text>
               <Image className="h-14 w-14 rounded-full" source={dish.image} />
               <Text className="flex-1 font-bold text-gray-700">
@@ -61,8 +90,9 @@ const CartScreen = () => {
               <Text className="font-semibold text-base">${dish.price}</Text>
               <TouchableOpacity
                 className="p-1 rounded-full"
-                style={{backgroundColor: themeColors.bgColor(1)}}
-                onPress={() => {}}>
+                style={{ backgroundColor: themeColors.bgColor(1) }}
+                onPress={() => dispatch(removeFromCart({ id: dish.id }))}
+              >
                 <Icon.Minus
                   strokeWidth={2}
                   height={20}
@@ -76,25 +106,27 @@ const CartScreen = () => {
       </ScrollView>
       {/* totals */}
       <View
-        style={{backgroundColor: themeColors.bgColor(0.2)}}
-        className=" p-6 px-8 rounded-t-3xl space-y-4">
+        style={{ backgroundColor: themeColors.bgColor(0.2) }}
+        className=" p-6 px-8 rounded-t-3xl space-y-4"
+      >
         <View className="flex-row justify-between">
           <Text className="text-gray-700">Subtotal</Text>
-          <Text className="text-gray-700">$ 20</Text>
+          <Text className="text-gray-700">$ {cartTotal}</Text>
         </View>
         <View className="flex-row justify-between">
           <Text className="text-gray-700">Delivery Fee</Text>
-          <Text className="text-gray-700">$ 2</Text>
+          <Text className="text-gray-700">$ {deliveryFee}</Text>
         </View>
         <View className="flex-row justify-between">
           <Text className="font-extrabold">Order Total</Text>
-          <Text className="font-extrabold">$</Text>
+          <Text className="font-extrabold">$ { cartTotal+deliveryFee}</Text>
         </View>
         <View>
           <TouchableOpacity
-            style={{backgroundColor: themeColors.bgColor(1)}}
-            onPress={() => navigation.navigate('PreparingOrder')}
-            className="p-3 rounded-full">
+            style={{ backgroundColor: themeColors.bgColor(1) }}
+            onPress={() => navigation.navigate("PreparingOrder")}
+            className="p-3 rounded-full"
+          >
             <Text className="text-white text-center font-bold text-lg">
               Place Order
             </Text>

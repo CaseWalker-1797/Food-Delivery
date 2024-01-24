@@ -2,12 +2,23 @@ import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import { themeColors } from "../styles/theme";
 import * as Icon from "react-native-feather";
+import { addToCart, removeFromCart, selectCartItemsById } from "../redux/slices/cartSlice";
+import { useDispatch,useSelector } from "react-redux";
 
 const DishRow = ({ item }) => {
+  const dispatch = useDispatch();
+  const handleIncrease = () => {
+    dispatch(addToCart({ ...item }));
+  };
+  const handleDecrease = () => {
+    dispatch(removeFromCart({ id: item.id }));
+  };
+  const totalItems = useSelector(state => selectCartItemsById(state, item.id));
   return (
     <View
       style={styles.container}
-      className=" border border-gray-100 flex-row items-center bg-white px-3 py-3 rounded-3xl shadow-2xl mb-3 mx-2">
+      className=" border border-gray-100 flex-row items-center bg-white px-3 py-3 rounded-3xl shadow-2xl mb-3 mx-2"
+    >
       <Image
         className="rounded-3xl"
         style={{ height: 100, width: 100 }}
@@ -22,8 +33,8 @@ const DishRow = ({ item }) => {
           <Text className="text-gray-700 text-lg font-bold">${item.price}</Text>
           <View className="flex-row items-center">
             <TouchableOpacity
-              // onPress={handleDecrease}
-              // disabled={!basketItems.length}
+              onPress={handleDecrease}
+              disabled={!totalItems.length}
               className="p-1 rounded-full"
               style={{ backgroundColor: themeColors.bgColor(1) }}
             >
@@ -34,9 +45,9 @@ const DishRow = ({ item }) => {
                 stroke="white"
               />
             </TouchableOpacity>
-            <Text className="px-3">{2}</Text>
+            <Text className="px-3">{totalItems.length}</Text>
             <TouchableOpacity
-              // onPress={handleIncrease}
+              onPress={handleIncrease}
               className="p-1 rounded-full"
               style={{ backgroundColor: themeColors.bgColor(1) }}
             >

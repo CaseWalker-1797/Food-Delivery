@@ -1,23 +1,27 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  StatusBar,
-} from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
 import { themeColors } from "../styles/theme";
+import { useDispatch } from "react-redux";
 import DishRow from "../components/dishRow";
 import CartIcon from "../components/cartIcon";
+import { setRestro } from "../redux/slices/restroSlice";
+import { useEffect } from "react";
 
 const RestroScreen = ({ navigation }) => {
   const { params } = useRoute();
   let item = params;
+  const dispatch = useDispatch();
   console.log("restro+++++++>", item);
+  useEffect(() => {
+    if (item && item.id) {
+      dispatch(setRestro({ ...item }));
+    }
+    return () => {};
+  }, []);
+
   return (
     <SafeAreaView className="flex-1" edges={["bottom"]}>
       <View className="relative">
@@ -63,15 +67,14 @@ const RestroScreen = ({ navigation }) => {
       </View>
       <View className="flex-1 bg-white">
         <Text className="px-4 py-2 text-2xl font-bold">Menu</Text>
-        <ScrollView
-          showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           {/* dishes */}
           {item.dishes.map((dish, index) => {
             return <DishRow key={index} item={{ ...dish }} />;
           })}
-          <View style={{height: 75,}} />
+          <View style={{ height: 75 }} />
         </ScrollView>
-          <CartIcon />
+        <CartIcon />
       </View>
     </SafeAreaView>
   );
