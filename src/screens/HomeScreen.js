@@ -1,4 +1,4 @@
-import { View, Text, StatusBar, TextInput, ScrollView } from "react-native";
+import { View, Text, StatusBar, TextInput, ScrollView, TouchableOpacity } from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-feather";
@@ -31,17 +31,17 @@ const HomeScreen = () => {
             <Text className="text-gray-600">PIET, PU</Text>
           </View>
         </View>
-        <View
+        <TouchableOpacity
           style={{ backgroundColor: themeColors.bgColor(1) }}
           className="p-3 rounded-full"
         >
-          <Icon.Sliders
+          <Icon.Menu
             height={20}
             width={20}
             strokeWidth="2.5"
             stroke="white"
           />
-        </View>
+        </TouchableOpacity>
       </View>
       {/* Main Content */}
       <ScrollView>
