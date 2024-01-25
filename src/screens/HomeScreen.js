@@ -1,13 +1,20 @@
-import {View, Text, StatusBar, TextInput, ScrollView} from 'react-native';
-import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import * as Icon from 'react-native-feather';
-import {themeColors} from '../styles/theme';
-import Categories from '../components/categories';
-import FeatureRow from '../components/featuredRow';
-import {featured} from '../constants';
+import { View, Text, StatusBar, TextInput, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import * as Icon from "react-native-feather";
+import { themeColors } from "../styles/theme";
+import Categories from "../components/categories";
+import FeatureRow from "../components/featuredRow";
+import { getFeaturedRestro} from "../../api";
 
 const HomeScreen = () => {
+  const [featuredRestro, setFeaturedRestro] = useState([]);
+
+  useEffect(() => {
+    getFeaturedRestro().then((data) => {
+      setFeaturedRestro(data);
+    });
+  }, []);
   return (
     <SafeAreaView className="bg-white flex-1">
       {/* Search Bar */}
@@ -25,8 +32,9 @@ const HomeScreen = () => {
           </View>
         </View>
         <View
-          style={{backgroundColor: themeColors.bgColor(1)}}
-          className="p-3 rounded-full">
+          style={{ backgroundColor: themeColors.bgColor(1) }}
+          className="p-3 rounded-full"
+        >
           <Icon.Sliders
             height={20}
             width={20}
@@ -41,13 +49,14 @@ const HomeScreen = () => {
         <Categories />
         {/* Featured */}
         <View className="mt-5">
-          {[featured, featured, featured].map((item, index) => {
+          {
+            featuredRestro.map((item, index) => {
             return (
               <FeatureRow
                 key={index}
-                title={item.title}
-                restaurants={item.restaurants}
-                description={item.descrption}
+                title={item.feature_restro_name}
+                restaurants={item.feature_restro_restaurant}
+                description={item.feature_restro_descrption}
               />
             );
           })}

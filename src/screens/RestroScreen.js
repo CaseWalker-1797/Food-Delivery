@@ -9,6 +9,7 @@ import DishRow from "../components/dishRow";
 import CartIcon from "../components/cartIcon";
 import { setRestro } from "../redux/slices/restroSlice";
 import { useEffect } from "react";
+import { urlFor } from "../../sanity";
 
 const RestroScreen = ({ navigation }) => {
   const { params } = useRoute();
@@ -16,7 +17,7 @@ const RestroScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   console.log("restro+++++++>", item);
   useEffect(() => {
-    if (item && item.id) {
+    if (item && item._id) {
       dispatch(setRestro({ ...item }));
     }
     return () => {};
@@ -25,7 +26,7 @@ const RestroScreen = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1" edges={["bottom"]}>
       <View className="relative">
-        <Image className="w-full h-72" source={item.image} />
+        <Image className="w-full h-72" source={{ uri: urlFor(item.restro_image).url()}} />
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           className="absolute top-14 left-4 bg-gray-50 p-2 rounded-full shadow"
@@ -38,7 +39,7 @@ const RestroScreen = ({ navigation }) => {
         className="bg-white -mt-12 pt-6"
       >
         <View className="px-5">
-          <Text className="text-3xl font-bold">{item.name}</Text>
+          <Text className="text-3xl font-bold">{item.restro_name}</Text>
           {/* copy this code from restaurant card */}
           <View className="flex-row space-x-2 my-1">
             <View className="flex-row items-center space-x-1">
@@ -48,7 +49,7 @@ const RestroScreen = ({ navigation }) => {
               />
               <Text className="text-xs">
                 <Text className="text-green-700">{item.star}</Text>
-                <Text className="text-gray-700"> (4.6k review)</Text> ·
+                <Text className="text-gray-700"> ({item.restro_reviews} reviews)</Text> ·
                 <Text className="font-semibold text-gray-700">
                   {item.category}
                 </Text>
@@ -58,11 +59,11 @@ const RestroScreen = ({ navigation }) => {
               <Icon.MapPin color="gray" width={15} height={15} />
               <Text className="text-gray-800 text-xs">
                 {" "}
-                Nearby · {item.address}
+                Nearby · {item.restro_type.category_name}
               </Text>
             </View>
           </View>
-          <Text className="text-gray-500 mt-2">{item.description}</Text>
+          <Text className="text-gray-500 mt-2">{item.restro_description}</Text>
         </View>
       </View>
       <View className="flex-1 bg-white">

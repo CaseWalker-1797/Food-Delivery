@@ -30,7 +30,7 @@ const CartIcon = () => {
             View Cart
           </Text>
           <Text className="font-extrabold text-white text-lg">
-            ${cartTotal}
+            $ {cartTotal}
           </Text>
         </TouchableOpacity>
       </View>

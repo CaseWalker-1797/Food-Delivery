@@ -12,6 +12,7 @@ import {
   selectCartItems,
   selectCartTotal,
 } from "../redux/slices/cartSlice";
+import { urlFor } from "../../sanity";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,10 @@ const CartScreen = () => {
 
   useEffect(() => {
     const items = cartItems.reduce((group, item) => {
-      if (group[item.id]) {
-        group[item.id].push(item);
+      if (group[item._id]) {
+        group[item._id].push(item);
       } else {
-        group[item.id] = [item];
+        group[item._id] = [item];
       }
       return group;
     }, {});
@@ -47,7 +48,7 @@ const CartScreen = () => {
         </TouchableOpacity>
         <View>
           <Text className="text-center font-bold text-xl">Your cart</Text>
-          <Text className="text-center text-gray-500">{restaurant.name}</Text>
+          <Text className="text-center text-gray-500">{restaurant.restro_name}</Text>
         </View>
       </View>
       {/* delivery time */}
@@ -83,15 +84,15 @@ const CartScreen = () => {
               <Text style={{ color: themeColors.text }} className="font-bold">
                 x{items.length}
               </Text>
-              <Image className="h-14 w-14 rounded-full" source={dish.image} />
+              <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(dish.dish_image).url()}} />
               <Text className="flex-1 font-bold text-gray-700">
-                {dish.name}
+                {dish.dish_name}
               </Text>
-              <Text className="font-semibold text-base">${dish.price}</Text>
+              <Text className="font-semibold text-base">${dish.dish_price}</Text>
               <TouchableOpacity
                 className="p-1 rounded-full"
                 style={{ backgroundColor: themeColors.bgColor(1) }}
-                onPress={() => dispatch(removeFromCart({ id: dish.id }))}
+                onPress={() => dispatch(removeFromCart({ id: dish._id }))}
               >
                 <Icon.Minus
                   strokeWidth={2}
