@@ -1,7 +1,6 @@
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import React from 'react';
 import {themeColors} from '../styles/theme';
-
 import RestaurantCard from './resturantCard';
 
 const FeaturedRow = ({title, description, restaurants}) => {

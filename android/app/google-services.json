@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "172956847543",
+    "project_id": "reactnativetraining-1797",
+    "storage_bucket": "reactnativetraining-1797.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172956847543:android:2aa4f67c22d65efd332c32",
+        "android_client_info": {
+          "package_name": "com.food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCadZGkj3gYzRUrWeikSd6EWDoMF2HTxW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172956847543:android:0d8fe8ce7d3fe663332c32",
+        "android_client_info": {
+          "package_name": "com.project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCadZGkj3gYzRUrWeikSd6EWDoMF2HTxW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

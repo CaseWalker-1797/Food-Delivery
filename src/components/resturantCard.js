@@ -13,6 +13,7 @@ import { urlFor } from "../../sanity";
 
 const ResturantCard = ({ item }) => {
   const navigation = useNavigation();
+  // console.log("got++++>",item)
   return (
     <TouchableWithoutFeedback
       onPress={() => navigation.navigate("Restro", { ...item })}
