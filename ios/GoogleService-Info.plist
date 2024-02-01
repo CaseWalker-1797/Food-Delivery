@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>172956847543-ago0lbs3ppqsrfunq45mu0q5n7col8m4.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.172956847543-ago0lbs3ppqsrfunq45mu0q5n7col8m4</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>172956847543-pslch2ageb5072pgtjg7qp0fggjviose.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBuNJIl_0skyrAP0eaH7P41ODXwpjZa3QU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>172956847543</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.food</string>
+	<key>PROJECT_ID</key>
+	<string>reactnativetraining-1797</string>
+	<key>STORAGE_BUCKET</key>
+	<string>reactnativetraining-1797.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:172956847543:ios:efeca01478527cbd332c32</string>
+</dict>
+</plist>
