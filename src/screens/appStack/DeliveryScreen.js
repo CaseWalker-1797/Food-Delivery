@@ -1,13 +1,13 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
-import { featured } from "../constants";
+// import { featured } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
-import MapView, { Marker} from "react-native-maps";
-import { themeColors } from "../styles/theme";
+import MapView, { Marker } from "react-native-maps";
+import { themeColors } from "../../styles/theme";
 import * as Icon from "react-native-feather";
 import { useSelector, useDispatch } from "react-redux";
-import { selectRestro } from "../redux/slices/restroSlice";
-import { emptyCart } from "../redux/slices/cartSlice";
+import { selectRestro } from "../../redux/slices/restroSlice";
+import { emptyCart } from "../../redux/slices/cartSlice";
 
 const DeliveryScreen = () => {
   const restaurant = useSelector(selectRestro);
@@ -57,7 +57,7 @@ const DeliveryScreen = () => {
           </View>
           <Image
             className="h-24 w-24"
-            source={require("../assets/images/bikeGuy2.gif")}
+            source={require("../../assets/images/bikeGuy2.gif")}
           />
         </View>
 
@@ -72,7 +72,7 @@ const DeliveryScreen = () => {
             <Image
               style={{ backgroundColor: "rgba(255,255,255,0.4)" }}
               className="w-16 h-16 rounded-full"
-              source={require("../assets/images/deliveryGuy.jpeg")}
+              source={require("../../assets/images/deliveryGuy.jpeg")}
             />
           </View>
 

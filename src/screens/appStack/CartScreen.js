@@ -1,18 +1,18 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { themeColors } from "../styles/theme";
+import { themeColors } from "../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
-import { featured } from "../constants";
+// import { featured } from "../../constants";
 import { useSelector, useDispatch } from "react-redux";
-import { selectRestro } from "../redux/slices/restroSlice";
+import { selectRestro } from "../../redux/slices/restroSlice";
 import {
   removeFromCart,
   selectCartItems,
   selectCartTotal,
-} from "../redux/slices/cartSlice";
-import { urlFor } from "../../sanity";
+} from "../../redux/slices/cartSlice";
+import { urlFor } from "../../../sanity";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -57,7 +57,7 @@ const CartScreen = () => {
         className="flex-row px-4 items-center"
       >
         <Image
-          source={require("../assets/images/bikeGuy.png")}
+          source={require("../../assets/images/bikeGuy.png")}
           className="w-20 h-20 rounded-full"
         />
         <Text className="flex-1 pl-4">Deliver in 20-30 minutes</Text>

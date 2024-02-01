@@ -3,13 +3,13 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRoute } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
-import { themeColors } from "../styles/theme";
+import { themeColors } from "../../styles/theme";
 import { useDispatch } from "react-redux";
-import DishRow from "../components/dishRow";
-import CartIcon from "../components/cartIcon";
-import { setRestro } from "../redux/slices/restroSlice";
+import DishRow from "../../components/dishRow";
+import CartIcon from "../../components/cartIcon";
+import { setRestro } from "../../redux/slices/restroSlice";
 import { useEffect } from "react";
-import { urlFor } from "../../sanity";
+import { urlFor } from "../../../sanity";
 
 const RestroScreen = ({ navigation }) => {
   const { params } = useRoute();
@@ -44,7 +44,7 @@ const RestroScreen = ({ navigation }) => {
           <View className="flex-row space-x-2 my-1">
             <View className="flex-row items-center space-x-1">
               <Image
-                source={require("../assets/images/fullStar.png")}
+                source={require("../../assets/images/fullStar.png")}
                 className="h-4 w-4"
               />
               <Text className="text-xs">

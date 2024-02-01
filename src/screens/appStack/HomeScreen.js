@@ -1,14 +1,22 @@
-import { View, Text, StatusBar, TextInput, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Icon from "react-native-feather";
-import { themeColors } from "../styles/theme";
-import Categories from "../components/categories";
-import FeatureRow from "../components/featuredRow";
-import { getFeaturedRestro} from "../../api";
+import { themeColors } from "../../styles/theme";
+import Categories from "../../components/categories";
+import FeatureRow from "../../components/featuredRow";
+import { getFeaturedRestro } from "../../../api";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
   const [featuredRestro, setFeaturedRestro] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     getFeaturedRestro().then((data) => {
@@ -18,7 +26,7 @@ const HomeScreen = () => {
   return (
     <SafeAreaView className="bg-white flex-1">
       {/* Search Bar */}
-      <View className="flex-row items-center space-x-2 p-2">
+      <View className=" flex-row items-center space-x-2 p-2">
         <View className="flex-row flex-1 items-center p-2 rounded-full border border-gray-300">
           <Icon.Search height="25" width="25" stroke="gray" />
           <TextInput
@@ -31,16 +39,13 @@ const HomeScreen = () => {
             <Text className="text-gray-600">PIET, PU</Text>
           </View>
         </View>
+        {/* User Profile Button */}
         <TouchableOpacity
           style={{ backgroundColor: themeColors.bgColor(1) }}
           className="p-3 rounded-full"
+          onPress={() => navigation.navigate("User")}
         >
-          <Icon.Menu
-            height={20}
-            width={20}
-            strokeWidth="2.5"
-            stroke="white"
-          />
+          <Icon.Menu height={20} width={20} strokeWidth="2.5" stroke="white" />
         </TouchableOpacity>
       </View>
       {/* Main Content */}
@@ -49,8 +54,7 @@ const HomeScreen = () => {
         <Categories />
         {/* Featured */}
         <View className="mt-5">
-          {
-            featuredRestro.map((item, index) => {
+          {featuredRestro.map((item, index) => {
             return (
               <FeatureRow
                 key={index}

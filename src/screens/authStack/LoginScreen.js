@@ -6,12 +6,12 @@ import { useNavigation } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
 import { AppleButton } from "@invertase/react-native-apple-authentication";
 import auth from "@react-native-firebase/auth";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
+// import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-GoogleSignin.configure({
-  webClientId:
-    "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
-});
+// GoogleSignin.configure({
+//   webClientId:
+//     "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+// });
 
 async function onAppleButtonPress() {}
 
@@ -39,13 +39,13 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView className="bg-white justify-center flex-1">
-      <View className="border self-center m-1">
-        <Text className=" font-bold self-center border text-4xl m-12 p-8">
+      <View className=" self-center m-1 p-8">
+        <Text className=" font-bold text-4xl  m-8 p-1">
           Welcome Back!!
         </Text>
 
         {/* User email */}
-        <View className="flex-row items-center m-2 p-2 rounded-lg border border-gray-300">
+        <View className="flex-row items-center space-x-4 my-3 p-2 rounded-lg border border-gray-300">
           <Icon.User height="25" width="25" stroke="gray" />
           <TextInput
             className="ml-2"
@@ -56,7 +56,7 @@ const LoginScreen = () => {
           />
         </View>
         {/* User password */}
-        <View className="flex-row items-center m-2 p-2 rounded-lg border border-gray-300">
+        <View className="flex-row items-center space-x-4 my-3 p-2 rounded-lg border border-gray-300">
           <Icon.Key height="25" width="25" stroke="gray" />
           <TextInput
             className="ml-2"
@@ -71,7 +71,7 @@ const LoginScreen = () => {
           Forgot Password?
         </Text>
         {/* Login Button */}
-        <View className="flex-row self-center items-center space-x-2 m-12 ">
+        <View className="flex-row self-center items-center space-x-2 m-10">
           <TouchableOpacity
             style={{ backgroundColor: themeColors.bgColor(1) }}
             className="rounded-full pl-20 pr-20 pt-2 pb-2"
@@ -101,9 +101,8 @@ const LoginScreen = () => {
           {/* Google Login Button */}
           {/* Facebook Login Button */}
         </View>
-      </View>
-      {/* Register Button */}
-      <View className=" border flex-row space-x-2 justify-center m-3 p-2">
+          {/* Register Button */}
+      <View className="  flex-row space-x-2 justify-center m-4">
         <Text className="text-base font-semibold">Don't have an account ?</Text>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text
@@ -113,6 +112,7 @@ const LoginScreen = () => {
             Register
           </Text>
         </TouchableOpacity>
+      </View>
       </View>
     </SafeAreaView>
   );
