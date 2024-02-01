@@ -12,7 +12,20 @@
           "package_name": "com.food"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "172956847543-pslch2ageb5072pgtjg7qp0fggjviose.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.food",
+            "certificate_hash": "6b01b082c574ea071238d62bab536f6e57e30aac"
+          }
+        },
+        {
+          "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCadZGkj3gYzRUrWeikSd6EWDoMF2HTxW8"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172956847543-ago0lbs3ppqsrfunq45mu0q5n7col8m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.food"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +56,12 @@
           "package_name": "com.project"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCadZGkj3gYzRUrWeikSd6EWDoMF2HTxW8"
@@ -39,7 +69,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "172956847543-ago0lbs3ppqsrfunq45mu0q5n7col8m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.food"
+              }
+            }
+          ]
         }
       }
     }

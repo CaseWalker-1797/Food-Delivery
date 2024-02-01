@@ -6,6 +6,12 @@ import { useNavigation } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
 import { AppleButton } from "@invertase/react-native-apple-authentication";
 import auth from "@react-native-firebase/auth";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
+
+GoogleSignin.configure({
+  webClientId:
+    "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+});
 
 async function onAppleButtonPress() {}
 
