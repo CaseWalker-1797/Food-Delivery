@@ -1,26 +1,33 @@
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { themeColors } from "../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import * as Icon from "react-native-feather";
 import { AppleButton } from "@invertase/react-native-apple-authentication";
+import {
+  GoogleSigninButton,
+  GoogleSignin,
+} from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
-// import { GoogleSignin } from "@react-native-google-signin/google-signin";
-
-// GoogleSignin.configure({
-//   webClientId:
-//     "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
-// });
-
-async function onAppleButtonPress() {}
+import onAppleButtonPress from "./AppleAuth";
+import signIn from "./GoogleAuth";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLoginClickListner = () => {
+  useEffect(() => {
+    GoogleSignin.configure({
+      // scopes: ["email"],
+      webClientId:
+        "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+      offlineAccess: true,
+    });
+  }, []);
+
+  const onLoginButtonPress = () => {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -40,9 +47,7 @@ const LoginScreen = () => {
   return (
     <SafeAreaView className="bg-white justify-center flex-1">
       <View className=" self-center m-1 p-8">
-        <Text className=" font-bold text-4xl  m-8 p-1">
-          Welcome Back!!
-        </Text>
+        <Text className=" font-bold text-4xl  m-8 p-1">Welcome Back!!</Text>
 
         {/* User email */}
         <View className="flex-row items-center space-x-4 my-3 p-2 rounded-lg border border-gray-300">
@@ -76,7 +81,7 @@ const LoginScreen = () => {
             style={{ backgroundColor: themeColors.bgColor(1) }}
             className="rounded-full pl-20 pr-20 pt-2 pb-2"
             onPress={() => {
-              onLoginClickListner();
+              onLoginButtonPress();
               reset();
             }}
           >
@@ -84,35 +89,59 @@ const LoginScreen = () => {
           </TouchableOpacity>
         </View>
         {/* Social Login Buttons */}
-        <View className=" justify-center items-center m-2 p-2">
+        <View className=" space-y-1 justify-center items-center m-2 p-2">
           <Text className=" font-semibold text-base m-2 p-2">
             Or Login with
           </Text>
           {/* Apple Login Button */}
           <AppleButton
-            buttonStyle={AppleButton.Style.DEFAULT}
-            buttonType={AppleButton.Type.SIGN_IN}
+            buttonStyle={AppleButton.Style.BLACK}
+            buttonType={AppleButton.Type.CONTINUE}
             style={{
-              width: 160,
-              height: 45,
+              width: 180,
+              height: 51,
             }}
-            onPress={() => onAppleButtonPress()}
+            onPress={onAppleButtonPress}
           />
           {/* Google Login Button */}
+          <GoogleSigninButton
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Light}
+            onPress={() => {
+              user = signIn();
+              if (user) {
+                user
+                  .then((user) => {
+                    console.log("Google User : " + JSON.stringify(user));
+                    navigation.navigate("Home");
+                  })
+                  .catch((err) => {
+                    console.log("Google Error : " + err);
+                  });
+                console.log("first : ", JSON.stringify(user));
+              }
+            }}
+            style={{
+              width: 312,
+              height: 48,
+            }}
+          />
           {/* Facebook Login Button */}
         </View>
-          {/* Register Button */}
-      <View className="  flex-row space-x-2 justify-center m-4">
-        <Text className="text-base font-semibold">Don't have an account ?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-          <Text
-            style={{ color: themeColors.bgColor(1) }}
-            className="font-bold text-base"
-          >
-            Register
+        {/* Register Button */}
+        <View className="  flex-row space-x-2 justify-center m-4">
+          <Text className="text-base font-semibold">
+            Don't have an account ?
           </Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+            <Text
+              style={{ color: themeColors.bgColor(1) }}
+              className="font-bold text-base"
+            >
+              Register
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

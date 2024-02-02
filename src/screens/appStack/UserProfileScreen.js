@@ -12,6 +12,7 @@ const UserProfileScreen = () => {
     auth()
       .signOut()
       .then(() => console.log("User signed out!"));
+    
     navigation.navigate("Login");
   };
   return (
