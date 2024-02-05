@@ -3,8 +3,7 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  Dimensions,
-  useWindowDimensions,
+  ScrollView,
 } from "react-native";
 import React from "react";
 import { useState } from "react";
@@ -57,7 +56,7 @@ const RegisterScreen = () => {
         className="w-full h-2/5"
         source={require("../../assets/images/signupImage.png")}
       />
-      <View className="space-y-2">
+      <ScrollView className="space-y-2">
         <Text className="font-bold text-4xl self-start my-4 mx-2">Sign Up</Text>
         <View className="justify-center items-center">
           {/*Email Id*/}
@@ -165,7 +164,7 @@ const RegisterScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

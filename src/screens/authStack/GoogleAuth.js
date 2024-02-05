@@ -39,6 +39,7 @@ const onGoogleButtonPress = async () => {
       console.log("play services not available or outdated");
     } else {
       // some other error happened
+      console.log("error ++++++++ : " + JSON.stringify(error));
     }
     return (error);
   }

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { themeColors } from "../../styles/theme";
@@ -17,6 +17,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     GoogleSignin.configure({
+      // scopes: ["email", "profile"],
       webClientId:
         "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
       offlineAccess: true,
@@ -41,14 +42,15 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView className="bg-white justify-top flex-1"
-    edges={["bottom"]}>
+    <SafeAreaView className="bg-white justify-top flex-1" edges={["bottom"]}>
       <Image
         className="w-full h-2/5"
         source={require("../../assets/images/signinImage.png")}
       />
-      <Text className=" font-bold self-start text-4xl my-4 mx-2">Sign In</Text>
-      <View className="space-y-2">
+      <ScrollView className="space-y-2">
+        <Text className=" font-bold self-start text-4xl my-4 mx-2">
+          Sign In
+        </Text>
         {/* User email */}
         <View className="flex-row justify-start items-center space-x-4 m-2">
           <Icon source="account" size={25} />
@@ -99,7 +101,7 @@ const LoginScreen = () => {
         {/* Social Login Buttons */}
         <View className="space-y-3 justify-center items-center">
           <Text className=" font-semibold text-base m-2">Or</Text>
-          <View className="flex-row justify-center items-center space-x-4" >
+          <View className="flex-row justify-center items-center space-x-4">
             {/* Apple Login Button */}
             <IconButton
               icon="apple"
@@ -137,7 +139,7 @@ const LoginScreen = () => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
