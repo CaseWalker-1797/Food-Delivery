@@ -27,13 +27,13 @@ const UserProfileScreen = () => {
     <SafeAreaView className="flex-1 bg-gray-100 justify-top">
       {/* Back Button */}
       <IconButton
-        className="self-start shadow-lg"
-        style={{ elevation: 6 }}
+        className="self-start shadow-lg m-4"
         icon="arrow-left"
         iconColor={themeColors.bgColor(1)}
         backgroundColor="white"
+        theme={{elevation:9}}
         size={24}
-        onPress={() => navigation.goBack()}
+        onPress={()=>navigation.goBack()}
       />
       <ScrollView className="flex-1 space-y-2">
         {/* Profile Picture */}
@@ -101,7 +101,7 @@ const UserProfileScreen = () => {
         <View className="space-y-3 rounded-lg m-2 p-2">
           {/* Your Account Button */}
           <TouchableOpacity
-            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-4 shadow-lg"
+            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-5 shadow-lg"
             onPress={() => navigation.navigate("User")}
           >
             <Icon.User
@@ -120,7 +120,7 @@ const UserProfileScreen = () => {
           </TouchableOpacity>
           {/* Address Book */}
           <TouchableOpacity
-            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-4 shadow-lg"
+            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-5 shadow-lg"
             onPress={() => navigation.navigate("User")}
           >
             <Icon.Book
@@ -140,7 +140,7 @@ const UserProfileScreen = () => {
 
           {/* Payment Methods */}
           <TouchableOpacity
-            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-4 shadow-lg"
+            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-5 shadow-lg"
             onPress={() => navigation.navigate("User")}
           >
             <Icon.CreditCard
@@ -161,7 +161,8 @@ const UserProfileScreen = () => {
           </TouchableOpacity>
           {/* Feedback Button */}
           <TouchableOpacity
-            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-4 shadow-lg"
+            className=" flex-row flex-1 justify-between items-center bg-white border-b-2 border-gray-200 rounded-lg m-1 p-5 shadow-lg"
+            // style={{elevation:12}}
             onPress={() => navigation.navigate("User")}
           >
             <Icon.Edit

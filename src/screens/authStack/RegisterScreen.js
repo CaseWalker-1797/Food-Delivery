@@ -1,12 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { TextInput } from "react-native-paper";
 import { themeColors } from "../../styles/theme";
@@ -19,6 +13,15 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState("");
   // const [conPassword, setConPassword] = useState("");
   const navigation = useNavigation();
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      // scopes: ["email", "profile"],
+      webClientId:
+        "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+      offlineAccess: true,
+    });
+  }, []);
 
   const onSignupButtonPress = () => {
     auth()
@@ -49,7 +52,7 @@ const RegisterScreen = () => {
   return (
     <SafeAreaView
       // className="bg-white justify-top flex-1"
-      style={{ flex: 1, backgroundColor: "white", justifyContent: "top"}}
+      style={{ flex: 1, backgroundColor: "white", justifyContent: "top" }}
       edges={["bottom"]}
     >
       <Image

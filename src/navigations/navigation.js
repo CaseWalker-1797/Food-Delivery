@@ -11,6 +11,7 @@ import RegisterScreen from "../screens/authStack/RegisterScreen";
 import ForgotPasswordScreen from "../screens/authStack/ForgotPasswordScreen";
 import { User } from "react-native-feather";
 import UserProfileScreen from "../screens/appStack/UserProfileScreen";
+import SplashScreen from "../screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,9 +19,10 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="User"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
+        <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Forgot Password" component={ForgotPasswordScreen} />
