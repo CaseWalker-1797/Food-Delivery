@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { themeColors } from "../../styles/theme";
@@ -41,15 +41,20 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView className="bg-white justify-center items-center flex-1">
-      <View className=" flex-1 justify-center items-center">
-        <Text className=" font-bold text-4xl  m-4 p-1">Sign In</Text>
+    <SafeAreaView className="bg-white justify-top flex-1"
+    edges={["bottom"]}>
+      <Image
+        className="w-full h-2/5"
+        source={require("../../assets/images/signinImage.png")}
+      />
+      <Text className=" font-bold self-start text-4xl my-4 mx-2">Sign In</Text>
+      <View className="space-y-2">
         {/* User email */}
         <View className="flex-row justify-start items-center space-x-4 m-2">
           <Icon source="account" size={25} />
           <TextInput
             mode="outlined"
-            className="flex-1 m-3"
+            className="flex-1"
             activeOutlineColor={themeColors.bgColor(1)}
             outlineColor="gray"
             theme={{ colors: { background: "white" } }}
@@ -59,7 +64,7 @@ const LoginScreen = () => {
           />
         </View>
         {/* User password */}
-        <View className="flex-row items-center space-x-4 my-3 p-2 rounded-lg">
+        <View className="flex-row items-center space-x-4 rounded-lg m-2">
           <Icon source="key" size={25} />
           <TextInput
             mode="outlined"
@@ -75,50 +80,51 @@ const LoginScreen = () => {
           />
         </View>
         {/* Forgot Password Button */}
-        <Text className=" m-2 p-2 text-gray-600 self-end font-bold text-sm text">
-          Forgot Password?
-        </Text>
-        {/* Login Button */}
-        <View className="flex-row self-center items-center space-x-2 m-10">
-          <TouchableOpacity
-            style={{ backgroundColor: themeColors.bgColor(1), elevation: 8 }}
-            className="rounded-full pl-20 pr-20 pt-2 pb-2"
-            onPress={() => {
-              onLoginButtonPress();
-              reset();
-            }}
-          >
-            <Text className="font-bold text-xl text-white">Sign In</Text>
-          </TouchableOpacity>
-        </View>
-        {/* Social Login Buttons */}
-        <View className="space-y-3 justify-center items-center m-2 p-2">
-          <Text className=" font-semibold text-base m-2 p-2">
-            Or Sign in with
+        <TouchableOpacity className="self-end my-3 p-1">
+          <Text className="text-gray-600 font-bold text-sm">
+            Forgot Password?
           </Text>
-          <View className="flex-row justify-center items-center">
+        </TouchableOpacity>
+        {/* Sign In Button */}
+        <TouchableOpacity
+          style={{ backgroundColor: themeColors.bgColor(1), elevation: 6 }}
+          className="rounded-full items-center shadow-md pl-20 pr-20 pt-3 pb-3 m-2"
+          onPress={() => {
+            onLoginButtonPress();
+            reset();
+          }}
+        >
+          <Text className="font-bold text-xl text-white">Sign In</Text>
+        </TouchableOpacity>
+        {/* Social Login Buttons */}
+        <View className="space-y-3 justify-center items-center">
+          <Text className=" font-semibold text-base m-2">Or</Text>
+          <View className="flex-row justify-center items-center space-x-4" >
             {/* Apple Login Button */}
             <IconButton
               icon="apple"
+              iconColor="black"
               size={48}
               onPress={() => onAppleButtonPress()}
             />
             {/* Google Login Button */}
             <IconButton
               icon="google"
+              iconColor="red"
               size={48}
               onPress={() => onGoogleButtonPress()}
             />
             {/* Facebook Login Button */}
             <IconButton
               icon="facebook"
+              iconColor="blue"
               size={48}
               onPress={() => console.log("Pressed")}
             />
           </View>
         </View>
-        {/* Register Button */}
-        <View className="  flex-row space-x-2 justify-center m-4">
+        {/* Go to Sign Up Button */}
+        <View className="  flex-row justify-center space-x-2 m-1">
           <Text className="text-base font-semibold">
             Don't have an account ?
           </Text>
@@ -127,7 +133,7 @@ const LoginScreen = () => {
               style={{ color: themeColors.bgColor(1) }}
               className="font-bold text-base"
             >
-              Register
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
