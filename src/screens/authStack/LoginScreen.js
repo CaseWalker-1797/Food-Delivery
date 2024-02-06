@@ -85,7 +85,8 @@ const LoginScreen = () => {
           />
         </View>
         {/* Forgot Password Button */}
-        <TouchableOpacity className="self-end my-3 p-1">
+        <TouchableOpacity className="self-end my-3 p-1"
+        onPress={()=>navigation.navigate("Forgot")}>
           <Text className="text-gray-600 font-bold text-sm">
             Forgot Password?
           </Text>
@@ -121,12 +122,6 @@ const LoginScreen = () => {
               style={{ width: 48, height: 48 }}
               // disabled={this.state.isSigninInProgress}
             />
-            {/* <IconButton
-              icon="google"
-              iconColor="red"
-              size={48}
-              onPress={() => onGoogleButtonPress()}
-            /> */}
             {/* Facebook Login Button */}
             <IconButton
               icon="facebook"

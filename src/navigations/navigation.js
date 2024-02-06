@@ -9,7 +9,6 @@ import DeliveryScreen from "../screens/appStack/DeliveryScreen";
 import LoginScreen from "../screens/authStack/LoginScreen";
 import RegisterScreen from "../screens/authStack/RegisterScreen";
 import ForgotPasswordScreen from "../screens/authStack/ForgotPasswordScreen";
-import { User } from "react-native-feather";
 import UserProfileScreen from "../screens/appStack/UserProfileScreen";
 import SplashScreen from "../screens/SplashScreen";
 
@@ -19,13 +18,13 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="Forgot"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Forgot Password" component={ForgotPasswordScreen} />
+        <Stack.Screen name="Forgot" component={ForgotPasswordScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Restro" component={RestroScreen} />
         <Stack.Screen
