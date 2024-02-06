@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { themeColors } from "../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
 import { Icon, IconButton } from "react-native-paper";
 import { TextInput } from "react-native-paper";
@@ -98,6 +101,7 @@ const LoginScreen = () => {
         >
           <Text className="font-bold text-xl text-white">Sign In</Text>
         </TouchableOpacity>
+
         {/* Social Login Buttons */}
         <View className="space-y-3 justify-center items-center">
           <Text className=" font-semibold text-base m-2">Or</Text>
@@ -110,12 +114,19 @@ const LoginScreen = () => {
               onPress={() => onAppleButtonPress()}
             />
             {/* Google Login Button */}
-            <IconButton
+            <GoogleSigninButton
+              size={GoogleSigninButton.Size.Icon}
+              color={GoogleSigninButton.Color.Light}
+              onPress={() => onGoogleButtonPress()}
+              style={{ width: 48, height: 48 }}
+              // disabled={this.state.isSigninInProgress}
+            />
+            {/* <IconButton
               icon="google"
               iconColor="red"
               size={48}
               onPress={() => onGoogleButtonPress()}
-            />
+            /> */}
             {/* Facebook Login Button */}
             <IconButton
               icon="facebook"

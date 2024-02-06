@@ -21,7 +21,7 @@ const UserProfileScreen = () => {
       .signOut()
       .then(() => console.log("User signed out!"));
 
-    navigation.navigate("Login");
+    navigation.navigate("Splash");
   };
   return (
     <SafeAreaView className="flex-1 bg-gray-100 justify-top">
@@ -31,9 +31,9 @@ const UserProfileScreen = () => {
         icon="arrow-left"
         iconColor={themeColors.bgColor(1)}
         backgroundColor="white"
-        theme={{elevation:9}}
+        theme={{ elevation: 9 }}
         size={24}
-        onPress={()=>navigation.goBack()}
+        onPress={() => navigation.goBack()}
       />
       <ScrollView className="flex-1 space-y-2">
         {/* Profile Picture */}

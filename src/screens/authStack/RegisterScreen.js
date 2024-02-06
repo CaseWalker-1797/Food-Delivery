@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Icon, IconButton } from "react-native-paper";
 import auth from "@react-native-firebase/auth";
 import onGoogleButtonPress from "./GoogleAuth";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { GoogleSignin,} from "@react-native-google-signin/google-signin";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
