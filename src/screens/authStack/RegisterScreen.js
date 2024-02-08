@@ -7,8 +7,8 @@ import { themeColors } from "../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Icon, IconButton } from "react-native-paper";
 import auth from "@react-native-firebase/auth";
-import onGoogleButtonPress from "./GoogleAuth";
-import { GoogleSignin,} from "@react-native-google-signin/google-signin";
+import signIn from "./GoogleAuth";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const RegisterScreen = () => {
     GoogleSignin.configure({
       // scopes: ["email", "profile"],
       webClientId:
-        "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+        "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
       offlineAccess: true,
     });
   }, []);
@@ -53,8 +53,8 @@ const RegisterScreen = () => {
 
   return (
     <SafeAreaView
-      // className="bg-white justify-top flex-1"
-      style={{ flex: 1, backgroundColor: "white", justifyContent: "top" }}
+      className="bg-white justify-top flex-1"
+      // style={{ flex: 1, backgroundColor: "white", justifyContent: "top" }}
       edges={["bottom"]}
     >
       <Image
@@ -125,6 +125,7 @@ const RegisterScreen = () => {
           className="rounded-full items-center shadow-md pl-20 pr-20 pt-3 pb-3 m-2"
           onPress={() => {
             onSignupButtonPress();
+            navigation.goBack();
             reset();
           }}
         >
@@ -146,7 +147,7 @@ const RegisterScreen = () => {
               icon="google"
               iconColor="red"
               size={48}
-              onPress={() => onGoogleButtonPress()}
+              onPress={() => signIn()}
             />
             {/* Facebook Login Button */}
             <IconButton
@@ -158,7 +159,7 @@ const RegisterScreen = () => {
           </View>
         </View>
         {/* Go to Sign In Button */}
-        <View className="self-center flex-row space-x-2 m-1">
+        <View className="self-center flex-row space-x-2 m-4 p-4">
           <Text className="text-base font-semibold">Have an account ?</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
             <Text

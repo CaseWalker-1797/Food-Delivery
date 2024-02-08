@@ -40,6 +40,9 @@ target 'food' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # pod 'lottie-react-native', :path => '../node_modules/lottie-react-native'
+  # pod 'lottie-ios', :path => '../node_modules/lottie-ios'
+
   target 'foodTests' do
     inherit! :complete
     # Pods for testing

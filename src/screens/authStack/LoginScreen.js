@@ -3,15 +3,12 @@ import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { themeColors } from "../../styles/theme";
 import { useNavigation } from "@react-navigation/native";
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-} from "@react-native-google-signin/google-signin";
+import {GoogleSignin,GoogleSigninButton,} from "@react-native-google-signin/google-signin";
 import auth from "@react-native-firebase/auth";
 import { Icon, IconButton } from "react-native-paper";
 import { TextInput } from "react-native-paper";
 import onAppleButtonPress from "./AppleAuth";
-import onGoogleButtonPress from "./GoogleAuth";
+import signIn from "./GoogleAuth";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -22,7 +19,7 @@ const LoginScreen = () => {
     GoogleSignin.configure({
       // scopes: ["email", "profile"],
       webClientId:
-        "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+        "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
       offlineAccess: true,
     });
   }, []);
@@ -85,8 +82,10 @@ const LoginScreen = () => {
           />
         </View>
         {/* Forgot Password Button */}
-        <TouchableOpacity className="self-end my-3 p-1"
-        onPress={()=>navigation.navigate("Forgot")}>
+        <TouchableOpacity
+          className="self-end my-3 p-1"
+          onPress={() => navigation.navigate("Forgot")}
+        >
           <Text className="text-gray-600 font-bold text-sm">
             Forgot Password?
           </Text>
@@ -117,8 +116,8 @@ const LoginScreen = () => {
             {/* Google Login Button */}
             <GoogleSigninButton
               size={GoogleSigninButton.Size.Icon}
-              color={GoogleSigninButton.Color.Light}
-              onPress={() => onGoogleButtonPress()}
+              // color={GoogleSigninButton.Color.Light}
+              onPress={() => signIn()}
               style={{ width: 48, height: 48 }}
               // disabled={this.state.isSigninInProgress}
             />

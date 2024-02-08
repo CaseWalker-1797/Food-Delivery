@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "172956847543",
-    "project_id": "reactnativetraining-1797",
-    "storage_bucket": "reactnativetraining-1797.appspot.com"
+    "project_number": "279599636618",
+    "project_id": "trial-d159c",
+    "storage_bucket": "trial-d159c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:172956847543:android:2aa4f67c22d65efd332c32",
+        "mobilesdk_app_id": "1:279599636618:android:8b664c5275e01688820d73",
         "android_client_info": {
           "package_name": "com.food"
         }
       },
       "oauth_client": [
         {
-          "client_id": "172956847543-10hamvj5qv75qu5rn0rdm8mtdvjo70mb.apps.googleusercontent.com",
+          "client_id": "279599636618-gfkdl64uhajfqn4vf7dlcb53nqbo442q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.food",
@@ -22,24 +22,60 @@
           }
         },
         {
-          "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+          "client_id": "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCadZGkj3gYzRUrWeikSd6EWDoMF2HTxW8"
+          "current_key": "AIzaSyD92oBHXQNf1fY80Q6AXoUlvFP0CjMyHtE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "172956847543-75t69fffvc8snq9r1dfbi5iu59705ds4.apps.googleusercontent.com",
+              "client_id": "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "172956847543-ago0lbs3ppqsrfunq45mu0q5n7col8m4.apps.googleusercontent.com",
+              "client_id": "279599636618-76kjaami4mocsds46a4qfttq4spjc2l7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.food"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279599636618:android:346e3d9508705f8c820d73",
+        "android_client_info": {
+          "package_name": "com.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD92oBHXQNf1fY80Q6AXoUlvFP0CjMyHtE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279599636618-3bjh2308od7lto517ajggdt61j5m6d3m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "279599636618-76kjaami4mocsds46a4qfttq4spjc2l7.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "org.reactjs.native.example.food"

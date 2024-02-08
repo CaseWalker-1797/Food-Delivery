@@ -47,6 +47,7 @@ const ForgotPasswordScreen = () => {
           className="rounded-full items-center shadow-md pl-20 pr-20 pt-3 pb-3 m-4"
           onPress={() => {
             setEmail("");
+            navigation.goBack();
           }}
         >
           <Text className="font-bold text-xl text-white">Submit</Text>

@@ -10,7 +10,7 @@ import LoginScreen from "../screens/authStack/LoginScreen";
 import RegisterScreen from "../screens/authStack/RegisterScreen";
 import ForgotPasswordScreen from "../screens/authStack/ForgotPasswordScreen";
 import UserProfileScreen from "../screens/appStack/UserProfileScreen";
-import SplashScreen from "../screens/SplashScreen";
+// import SplashScreen from "../screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,10 +18,10 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Forgot"
+        initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Splash" component={SplashScreen} />
+        {/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Forgot" component={ForgotPasswordScreen} />

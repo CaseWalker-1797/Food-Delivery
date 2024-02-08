@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  TouchableHighlight,
+} from "react-native";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { themeColors } from "../../styles/theme";
@@ -13,6 +20,8 @@ import {
   selectCartTotal,
 } from "../../redux/slices/cartSlice";
 import { urlFor } from "../../../sanity";
+import RazorpayCheckout from "react-native-razorpay";
+import { StripeProvider } from "@stripe/stripe-react-native";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -22,6 +31,33 @@ const CartScreen = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
   const [groupedItems, setGroupedItems] = useState([]);
+
+  const payment = () => {
+    var options = {
+      description: "Credits towards consultation",
+      image: "https://i.imgur.com/3g7nmJC.png",
+      currency: "INR",
+      key: "rzp_test_SOWJoiEDOExiNA",
+      amount: "5000",
+      name: "foo",
+      order_id: "",
+      prefill: {
+        email: "void@razorpay.com",
+        contact: "9191919191",
+        name: "Razorpay Software",
+      },
+      theme: { color: "#F37254" },
+    };
+    RazorpayCheckout.open(options)
+      .then((data) => {
+        // handle success
+        alert(`Success: ${data.razorpay_payment_id}`);
+      })
+      .catch((error) => {
+        // handle failure
+        alert(`Error: ${error.code} | ${error.description}`);
+      });
+  };
 
   useEffect(() => {
     const items = cartItems.reduce((group, item) => {
@@ -48,7 +84,9 @@ const CartScreen = () => {
         </TouchableOpacity>
         <View>
           <Text className="text-center font-bold text-xl">Your cart</Text>
-          <Text className="text-center text-gray-500">{restaurant.restro_name}</Text>
+          <Text className="text-center text-gray-500">
+            {restaurant.restro_name}
+          </Text>
         </View>
       </View>
       {/* delivery time */}
@@ -84,11 +122,16 @@ const CartScreen = () => {
               <Text style={{ color: themeColors.text }} className="font-bold">
                 x{items.length}
               </Text>
-              <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(dish.dish_image).url()}} />
+              <Image
+                className="h-14 w-14 rounded-full"
+                source={{ uri: urlFor(dish.dish_image).url() }}
+              />
               <Text className="flex-1 font-bold text-gray-700">
                 {dish.dish_name}
               </Text>
-              <Text className="font-semibold text-base">${dish.dish_price}</Text>
+              <Text className="font-semibold text-base">
+                ${dish.dish_price}
+              </Text>
               <TouchableOpacity
                 className="p-1 rounded-full"
                 style={{ backgroundColor: themeColors.bgColor(1) }}
@@ -120,12 +163,12 @@ const CartScreen = () => {
         </View>
         <View className="flex-row justify-between">
           <Text className="font-extrabold">Order Total</Text>
-          <Text className="font-extrabold">$ { cartTotal+deliveryFee}</Text>
+          <Text className="font-extrabold">$ {cartTotal + deliveryFee}</Text>
         </View>
         <View>
           <TouchableOpacity
             style={{ backgroundColor: themeColors.bgColor(1) }}
-            onPress={() => navigation.navigate("PreparingOrder")}
+            onPress={payment}
             className="p-3 rounded-full"
           >
             <Text className="text-white text-center font-bold text-lg">

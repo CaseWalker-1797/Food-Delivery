@@ -13,15 +13,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import auth from "@react-native-firebase/auth";
 import { IconButton } from "react-native-paper";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 const UserProfileScreen = () => {
   const navigation = useNavigation();
-  const logout = () => {
+  const logout = async() => {
     auth()
       .signOut()
       .then(() => console.log("User signed out!"));
-
-    navigation.navigate("Splash");
+    // await GoogleSignin.revokeAccess();
+    // await GoogleSignin.signOut();
+    navigation.navigate("Login");
   };
   return (
     <SafeAreaView className="flex-1 bg-gray-100 justify-top">

@@ -6,7 +6,7 @@ import {
 } from "@react-native-google-signin/google-signin";
 
 
-const onGoogleButtonPress = async () => {
+const signIn = async () => {
   try {
   //   await GoogleSignin.hasPlayServices()
   // Check if your device supports Google Play
@@ -44,4 +44,4 @@ const onGoogleButtonPress = async () => {
     return (error);
   }
 };
-export default onGoogleButtonPress;
+export default signIn;

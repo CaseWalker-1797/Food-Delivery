@@ -1,4 +1,9 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LottieView from "lottie-react-native";
@@ -12,7 +17,7 @@ const SplashScreen = () => {
       <LottieView
         style={{
           width: "100%",
-          height: 550,
+          height: Dimensions.get("window").height / 3,
         }}
         source={require("../assets/lottie.json")}
         autoPlay
@@ -27,14 +32,14 @@ const SplashScreen = () => {
       <View className=" space-y-4 m-4 p-2 ">
         <TouchableOpacity
           style={{ backgroundColor: themeColors.bgColor(1), elevation: 9 }}
-          className="rounded-full items-center shadow-md pl-20 pr-20 pt-3 pb-3"
+          className="rounded-full items-center shadow-md pl-20 pr-20 pt-3 pb-3 m-2"
           onPress={() => Navigation.navigate("Login")}
         >
           <Text className="font-bold text-xl text-white">Sign In</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{ borderColor: themeColors.bgColor(1), elevation: 9 }}
-          className="rounded-full border items-center shadow-md pl-20 pr-20 pt-3 pb-3"
+          className="rounded-full border items-center shadow-md pl-20 pr-20 pt-3 pb-3 m-2"
           onPress={() => Navigation.navigate("Register")}
         >
           <Text
