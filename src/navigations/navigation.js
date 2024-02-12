@@ -9,6 +9,11 @@ import DeliveryScreen from "../screens/appStack/DeliveryScreen";
 import LoginScreen from "../screens/authStack/LoginScreen";
 import RegisterScreen from "../screens/authStack/RegisterScreen";
 import ForgotPasswordScreen from "../screens/authStack/ForgotPasswordScreen";
+
+import FeedbackScreen from "../screens/appStack/FeedbackScreen";
+import ManagePaymentScreen from "../screens/appStack/ManagePaymentScreen";
+import AddressBook from "../screens/appStack/AddressBook";
+import SettingsScreen from "../screens/appStack/SettingsScreen";
 import UserProfileScreen from "../screens/appStack/UserProfileScreen";
 // import SplashScreen from "../screens/SplashScreen";
 
@@ -18,7 +23,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Profile"
         screenOptions={{ headerShown: false }}
       >
         {/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
@@ -27,25 +32,29 @@ export default function Navigation() {
         <Stack.Screen name="Forgot" component={ForgotPasswordScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Restro" component={RestroScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Profile" component={UserProfileScreen} />
+        <Stack.Screen name="Payment" component={ManagePaymentScreen} />
+        <Stack.Screen name="Feedback" component={FeedbackScreen} />
         <Stack.Screen
           name="Cart"
-          options={{ presentation: "modal", headerShown: false }}
+          options={{ presentation: "modal" }}
           component={CartScreen}
         />
         <Stack.Screen
           name="PreparingOrder"
-          options={{ presentation: "fullScreenModal", headerShown: false }}
+          options={{ presentation: "fullScreenModal" }}
           component={PreparingOrderScreen}
         />
         <Stack.Screen
-          name="Delivery"
-          options={{ presentation: "fullScreenModal", headerShown: false }}
-          component={DeliveryScreen}
+          name="Address"
+          options={{ presentation: "fullScreenModal" }}
+          component={AddressBook}
         />
         <Stack.Screen
-          name="User"
-          options={{ headerShown: false }}
-          component={UserProfileScreen}
+          name="Delivery"
+          options={{ presentation: "fullScreenModal" }}
+          component={DeliveryScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>
