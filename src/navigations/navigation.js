@@ -22,8 +22,9 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
+      f
       <Stack.Navigator
-        initialRouteName="Profile"
+        initialRouteName="Register"
         screenOptions={{ headerShown: false }}
       >
         {/* <Stack.Screen name="Splash" component={SplashScreen} /> */}
